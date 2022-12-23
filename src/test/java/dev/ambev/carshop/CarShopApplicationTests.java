@@ -1,4 +1,4 @@
-package dev.ambev.CarShop;
+package dev.ambev.carshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

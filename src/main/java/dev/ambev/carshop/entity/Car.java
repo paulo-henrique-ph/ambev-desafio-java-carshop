@@ -1,4 +1,4 @@
-package dev.ambev.CarShop.entities;
+package dev.ambev.carshop.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

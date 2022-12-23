@@ -1,9 +1,7 @@
 spring:
-  application:
-    name: ambev-test
 
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST:localhost}:5432/ambev_db
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:5432/carshop_db
     username: ${DATABASE_USERNAME:root}
     password: ${DATABASE_PASSWORD:root}
 
