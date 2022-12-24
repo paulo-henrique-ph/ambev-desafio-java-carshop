@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping(BASE_URL)
-    public List<Car> findAvailableCarByBrandOrModel(@RequestParam String brand, String model) { return  carService.findAvailableCarByBrandOrModel(brand, model); }
+    public List<Car> findAvailableCarByBrandOrModel(@RequestParam Optional<String> brand, Optional<String> model) { return  carService.findAvailableCarByBrandOrModel(brand.orElse(""), model.orElse("")); }
     @GetMapping(GET_BY_ID_URL)
     public Car findCarById(@PathVariable UUID id) {
         return carService.findCarById(id);

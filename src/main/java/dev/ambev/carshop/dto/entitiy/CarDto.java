@@ -2,8 +2,10 @@ package dev.ambev.carshop.dto.entitiy;
 
 import dev.ambev.carshop.entity.Car;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
+@NoArgsConstructor
 @Data
 public class CarDto {
     @NotBlank(message="{brand.required}")
@@ -11,7 +13,6 @@ public class CarDto {
     @NotBlank(message="{model.required}")
     private String model;
 
-    @NotBlank(message="{available.required}")
     private Boolean available;
 
     CarDto(Car car) {

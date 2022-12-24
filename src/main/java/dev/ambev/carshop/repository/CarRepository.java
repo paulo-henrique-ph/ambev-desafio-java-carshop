@@ -14,8 +14,8 @@ public interface CarRepository extends JpaRepository<Car, UUID> {
 
     @Query("SELECT c " +
             "FROM Car c " +
-            "WHERE (:brand IS NULL OR UPPER(c.brand) = UPPER(:brand)) " +
-            "AND (:model IS NULL OR UPPER(c.model) = UPPER(:model)) " +
+            "WHERE (:brand = '' OR UPPER(c.brand) = UPPER(:brand)) " +
+            "AND (:model = '' OR UPPER(c.model) = UPPER(:model)) " +
             "AND c.available = true")
     List<Car> findAvailableCarByBrandOrModel(@Param("brand") String brand, @Param("model") String model);
 
