@@ -9,6 +9,7 @@ import dev.ambev.carshop.util.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -16,13 +17,33 @@ import java.util.UUID;
 public class CarService {
     private final CarRepository carRepository;
 
-    public Car createCar(CarDto carDto) {
-        final Car car = CarConverter.toEntity(carDto);
-        return carRepository.save(car);
+    public List<Car> findAvailableCarByBrandOrModel(String brand, String model) {
+        return carRepository.findAvailableCarByBrandOrModel(brand, model);
     }
 
     public Car findCarById(UUID id) {
-        return carRepository.findById(id)
-                .orElseThrow(() -> new DomainItemNotFoundException(ErrorMessage.CAR_NOT_FOUND, id.toString()));
+        return carRepository.findById(id).orElseThrow(() -> new DomainItemNotFoundException(ErrorMessage.CAR_NOT_FOUND, id.toString()));
     }
+
+    public Car createCar(CarDto carDto) {
+        final Car car = CarConverter.toEntity(carDto);
+
+        return carRepository.save(car);
+    }
+
+    public Car updateCar(UUID id, CarDto carDto) {
+        Car car = carRepository.findById(id).orElseThrow(() -> new DomainItemNotFoundException(ErrorMessage.CAR_NOT_FOUND, id.toString()));
+
+        car.setBrand(carDto.getBrand());
+        car.setModel(carDto.getModel());
+        car.setAvailable(carDto.getAvailable());
+
+        return carRepository.save(car);
+    }
+
+    public void deleteCarById(UUID id) {
+        carRepository.deleteById(id);
+    }
+
+
 }
