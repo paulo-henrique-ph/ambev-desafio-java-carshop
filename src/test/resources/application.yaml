@@ -1,0 +1,14 @@
+spring:
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  flyaway.enabled: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+    datasource:
+      url: jdbc:postgresql://${DATABASE_HOST:localhost}:5432/carshop_db
+      username: ${DATABASE_USERNAME:root}
+      password: ${DATABASE_PASSWORD:root}
