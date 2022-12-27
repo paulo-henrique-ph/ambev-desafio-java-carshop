@@ -1,4 +1,8 @@
 spring:
+  security.oauth2.resourceserver:
+    jwt:
+      issuer-uri: "${KEYCLOAK_URL:http://localhost:8081}/auth/realms/${KEYCLOAK_REALM:CarshopKeycloak}"
+      jwk-set-uri : "${KEYCLOAK_URL:http://localhost:8081}/auth/realms/${KEYCLOAK_REALM:CarshopKeycloak}/protocol/openid-connect/certs"
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST:localhost}:5432/carshop_db
     username: ${DATABASE_USERNAME:root}
